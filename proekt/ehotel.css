@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    font-family: 'Oswald';
+    font-weight: 200;
+    
+}
+#root{
+    background-image: url(backround.jpg);
+    background-size: cover;
+    background-position: center; 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.8;
+    position: relative;
+}
+#search{
+    width: 30%;
+    padding: 7px;
+    border-radius: 15px;
+    position: relative;
+    
+}
+#btn{
+    width: 5%;
+    height: 30px;
+    position: absolute;
+    right: 300px;
+    background-color: skyblue;
+    color: black;
+    border: 2px solid black;
+}
+
+

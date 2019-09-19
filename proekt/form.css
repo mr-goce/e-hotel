@@ -1,0 +1,33 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    font-family: 'Oswald';
+
+}
+#root{
+    background-image: url(background1.jpg);
+    background-size: cover;
+    background-position: center; 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.8;
+    position: relative;
+
+}
+.forma{
+    width: 30%;
+    padding: 7px;
+    display: block;
+
+}
+button{
+    height: 30px;
+    margin: 15px;
+}
