@@ -23,8 +23,8 @@ rootDiv.append(paragraf);
 //     position: "absolute",
 //     top:"60px",
 paragraf.on("click", () => {
-// })
-// rootDiv.append(description);
+    // })
+    // rootDiv.append(description);
     // window.location="index.html";
 
     var signINdiv = $("<div>").attr("class", "signInForm");
@@ -39,8 +39,10 @@ paragraf.on("click", () => {
     })
     rootDiv.append(signINdiv);
 
-    var signUsername = $("<input>").attr("placeholder", "Enter your name").addClass("signInInput");
-    var passUsermane = $("<input type = 'password'>").attr("placeholder", "Enter password").addClass("signInInput");
+    var signUsername = $("<input>").attr("placeholder", "Enter your email");
+    signUsername.attr("id", "signInInput");
+    var passUsermane = $("<input type = 'password'>").attr("placeholder", "Enter password");
+    passUsermane.attr("id", "password")
     var btnUsername = $("<button>").text("SIGN UP");
 
     signUsername.css({ display: "block", marginTop: "15px" });
@@ -55,9 +57,48 @@ paragraf.on("click", () => {
 
     // magic
 
-    
+
     //  var users = JSON.parse(localStorage.getItem("users"));z
-    
+    $("#signInInput").keyup(() => {
+        if (validateEmail()) {
+            $("#signInInput").css("border", "2px solid green");
+
+
+        } else {
+            $("#signInInput").css("border", "2px solid red");
+
+        }
+
+    })
+    function validateEmail() {
+        var email = $("#signInInput").val();
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (regex.test(email)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    $("#password").keyup(() => {
+        if (validatePassword()) {
+            $("#password").css("border", "2px solid green");
+        }
+        else {
+            $("#password").css("border", "2px solid red");
+        }
+
+    })
+    function validatePassword() {
+        var password = $("#password").val();
+        if (password.length > 7) {
+            return true;
+
+        } else {
+            return false;
+
+        }
+    }
     var array = [];
     btnUsername.on("click", () => {
         var user = signUsername.val();
@@ -65,33 +106,34 @@ paragraf.on("click", () => {
         var userObj = {
             userName: user,
             password: pass,
-            
+
         }
         signINdiv.css({
             display: "none",
         })
-        
+
+
         array.push(userObj);
         localStorage.setItem("users", JSON.stringify(array));
-        
+
     })
 })
 
 //  lOG IN
-logInButton.on('click',()=>{
+logInButton.on('click', () => {
 
     var loginUserName = username.val();
     console.log(loginUserName);
     var loginPassName = password.val();
-    var users= JSON.parse(localStorage.getItem("users"));
+    var users = JSON.parse(localStorage.getItem("users"));
     console.log(users);
-    for(var i=0; i<users.length;i++){
-         if(loginUserName === users[i].userName && loginPassName=== users[i].password){
-          
-            window.location="index.html"; 
-            
+    for (var i = 0; i < users.length; i++) {
+        if (loginUserName === users[i].userName && loginPassName === users[i].password) {
+
+            window.location = "index.html";
+
         }
-        else{
+        else {
             alert("please insert correct User and Password");
         }
     }
