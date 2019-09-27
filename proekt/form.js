@@ -14,19 +14,11 @@ paragraf.css({ color: "blue", position: "absolute", top: "15px", right: "15px" }
 
 
 
-// var signInButton =$("<button>").text("SIGN IN");
+
 rootDiv.append(paragraf);
-// rootDiv.append(signInButton);
 
-// var description = $("<h3>").text("Ener User Name and Password");
-// description.css({
-//     position: "absolute",
-//     top:"60px",
 paragraf.on("click", () => {
-    // })
-    // rootDiv.append(description);
-    // window.location="index.html";
-
+ 
     var signINdiv = $("<div>").attr("class", "signInForm");
     signINdiv.css({
         border: "2px solid black",
@@ -44,9 +36,11 @@ paragraf.on("click", () => {
     var passUsermane = $("<input type = 'password'>").attr("placeholder", "Enter password");
     passUsermane.attr("id", "password")
     var btnUsername = $("<button>").text("SIGN UP");
+    btnUsername.hide();
 
-    signUsername.css({ display: "block", marginTop: "15px" });
-    passUsermane.css({ display: "block", marginTop: "15px" });
+    signUsername.css({ display: "block", marginTop: "15px",width:"200px",height:"35px" });
+    passUsermane.css({ display: "block", marginTop: "15px",width:"200px",height:"35px" });
+    btnUsername.css({width:"200px",height:"35px",backgroundColor:"lightGreen"})
 
 
 
@@ -68,7 +62,7 @@ paragraf.on("click", () => {
             $("#signInInput").css("border", "2px solid red");
 
         }
-
+signUPshow();
     })
     function validateEmail() {
         var email = $("#signInInput").val();
@@ -87,6 +81,7 @@ paragraf.on("click", () => {
         else {
             $("#password").css("border", "2px solid red");
         }
+        signUPshow();
 
     })
     function validatePassword() {
@@ -97,6 +92,14 @@ paragraf.on("click", () => {
         } else {
             return false;
 
+        }
+    }
+    function signUPshow(){
+        if(validateEmail() &&  validatePassword()){
+            btnUsername.show();
+        }
+        else{
+            btnUsername.hide();
         }
     }
     var array = [];
